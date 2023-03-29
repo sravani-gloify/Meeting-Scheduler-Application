@@ -23,7 +23,7 @@ import com.jcg.mapstruct.repository.MeetingRepository;
 import biweekly.parameter.ParticipationLevel;
 import biweekly.property.Attendee;
 import biweekly.property.Organizer;
-
+//defining the bussinees logic
 @Service
 public class MeetingService {
 	
@@ -36,6 +36,7 @@ public class MeetingService {
 	@Autowired
 	private EmailService emailService;
 	
+	//save and send the mail meeting deatails and a specific record by using the method scheduleMeeting() of CrudRepository  
 	public MeetingDto scheduleMeeting(MeetingDto  meetingDto) throws IOException, MessagingException
 	{
 		Meeting meeting=meetingMapper.toMeeting(meetingDto);
@@ -50,12 +51,15 @@ public class MeetingService {
 		return meetingDto;
 	 			
 	}
+	//getting a specific record by using the method getAvailabilityByEventId() of CrudRepository  
    public HttpEntity<MeetingDto> getAvailabilityByEventId(Long eventId) {
 		
 	 //  System.out.println(meetingRepository.findById(eventId));
 	   
 		return meetingRepository.getAvailabilityByEventId(eventId);
 	}
+	
+	//send the mail meeting
 	private CalendarDto composeCalendar(Meeting meeting)
 	{
 		Candidate candidate=meeting.getCandidate();
@@ -69,6 +73,7 @@ public class MeetingService {
 				.attendees(getAttendees(meeting))
 		        .build();
 	}
+	//get the list of the attendees
 	private List<Attendee> getAttendees(Meeting meeting) {
 		Candidate candidate=meeting.getCandidate();
 		User user=meeting.getScheduler();
@@ -85,18 +90,22 @@ public class MeetingService {
 		
 		return attendees;
 	}
+	
+	//get the meeting deatail by get meeting()
 	public List<MeetingDto> getMeeting(String schedulerEmail)
 	{
 		List<Meeting> meetings=meetingRepository.getMeetingByScheduler_EmailId(schedulerEmail);
 		List<MeetingDto> meetingDtos=meetingMapper.toDtos(meetings);
 		return meetingDtos;
 	} 
+	
+	//getting a specific record by using the method findByMeetingId() of CrudRepository  
 	public Meeting findByMeetingId(Long id) {
 		
 		return meetingRepository.getById(id);
 		
 	}
-	
+	//send mail
 	public EmailDto composeEmail(Meeting meeting) {
 		return EmailDto.builder()
 				.from(meeting.getScheduler().getEmailId())
@@ -105,6 +114,8 @@ public class MeetingService {
 				.toList(getToEmails(meeting))
 				.build();
 	       }
+	
+	//send the mail by using to get Emails method
 	 List<String> getToEmails(Meeting meeting) {
 		List<String> emails=new ArrayList<>();
 		emails.add(meeting.getCandidate().getEmail());
@@ -113,8 +124,8 @@ public class MeetingService {
 		return emails;
 	}
 	 
-	 
-	public MeetingRepository getMeetingRepository() {
+	 //getetr and setter
+	public MeetingReposistory getMeetingRepository() {
 		return meetingRepository;
 	}
 
