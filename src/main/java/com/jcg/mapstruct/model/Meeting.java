@@ -16,20 +16,27 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
+//mark as entity
 @Entity
+//defining table name
 @Table(name="meeting")
+//create default constructor
 @NoArgsConstructor
+//create parameter constructor
 @AllArgsConstructor
 @Builder
 public class Meeting {
+	//id is an primary key
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private long id;
+	
+//manytoone relationship for the candidate and metting
     @ManyToOne(optional = true)
     @JoinColumn(name = "candidate_id", referencedColumnName = "id")
     private Candidate candidate;
+////manytoone relationship for the candidate and metting	
     @ManyToOne(optional = false)
     @JoinColumn(name = "scheduler_id", referencedColumnName = "id")
     private User scheduler;
