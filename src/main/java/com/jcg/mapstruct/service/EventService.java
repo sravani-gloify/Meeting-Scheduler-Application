@@ -19,16 +19,18 @@ public class EventService {
 	@Autowired
 	private EventRepository  eventRepository;
 	
-    @Autowired
+        @Autowired
 	private EventMapper eventMapper;
 	
+	//saving a specific record by using the method save() of CrudRepository  
 	public EventDto createEvent(EventDto eventDto) {
 	Event event=eventMapper.toEvent(eventDto);
 		event=eventRepository.save(event);
 	eventDto=eventMapper.toEventDto(event);
 		return eventDto;
 	}	
-
+	
+//saving a specific record by using the method createEvent() of CrudRepository  firstly check the already data is available or not
 	  public boolean isTimeSlotAvailable(Event newEvent) {
 	        List<Event> existingMeetings = eventRepository.findAll();
 	        for (Event meeting : existingMeetings) {
@@ -38,11 +40,11 @@ public class EventService {
 	        }
 	        return true;
 	    }
-
 	    public void addEvent(Event event) {
 	        eventRepository.save(event);
 	    }
-
+          
+	//getting a specific record by using the method getMeetingForDay() of CrudRepository  
 	    public List<Event> getMeetingsForDay(LocalDate date) {
 	        List<Event> meetings = new ArrayList<>();
 	        List<Event> allMeetings = eventRepository.findAll();
@@ -53,6 +55,8 @@ public class EventService {
 	        }
 	        return meetings;
 	    }	
+	
+	//getting a specific record by using the method getEvent() of CrudRepository  
 	public Event getEvent(Long eventId)
 	{
 		
@@ -60,14 +64,14 @@ public class EventService {
 	    return event;
 		
 	}
-	
+	//getting all record by using the method findAll() of CrudRepository  
 	public List<Event> findAll(){
 		
 		return eventRepository.findAll();
 		
 		
 	}
-      
+      // creating the getter and setter for the autowired classes
 	public EventRepository getEventRepository() {
 		return eventRepository;
 	}
