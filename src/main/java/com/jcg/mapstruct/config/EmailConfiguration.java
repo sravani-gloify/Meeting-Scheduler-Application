@@ -35,7 +35,7 @@ public class EmailConfiguration {
 	 
 	    @Value("${spring.mail.from}")
 	    private String from;
-	 
+	 // to create bean for the javamailsender
 	    @Bean
 	    public JavaMailSenderImpl javaMailSender() {
 	        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
