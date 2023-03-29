@@ -8,7 +8,7 @@ import com.jcg.mapstruct.model.ApiStatus;
 
 
 public class ResponseUtil {
-	
+	// to get the response as successfully fecth the data 
 	public static ResponseDto getSuccessResponse(Object data)
 	{		
 		ResponseDto responseDto=new ResponseDto();
@@ -18,6 +18,8 @@ public class ResponseUtil {
 		return responseDto;
 		
 	}
+	
+	//To get the response as fail when data not store the data base
    public static ResponseDto getFailureResponse(String message)
 	{
 		ResponseDto response=new ResponseDto();
@@ -27,6 +29,7 @@ public class ResponseUtil {
 		return response;
 		
 	}
+	//to get the massage response 
 	public static   ResponseDto getResponse(String message ,String status,Collection data)
 	{
 		
@@ -37,6 +40,7 @@ public class ResponseUtil {
 		return response;
 		
 	}
+	//to get the massage response as paasing the given parameters
 	public static ResponseDto getResponse(String message ,String status,Object  data)
 	{
 		
