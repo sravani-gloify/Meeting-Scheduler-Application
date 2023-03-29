@@ -6,7 +6,7 @@ import org.mapstruct.factory.Mappers;
 import com.jcg.mapstruct.dto.EventDto;
 import com.jcg.mapstruct.model.Event;
 
-
+//mark as mapper
 @Mapper(componentModel = "spring")
 public interface EventMapper {
     
