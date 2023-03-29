@@ -13,11 +13,16 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+//create defalut constructor
 @NoArgsConstructor
+//create a parameter constructor
 @AllArgsConstructor
+//mark as entity
 @Entity
+// defining table name
 @Table(name="feedback")
 public class FeedBack {
+	//id is an primary key
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
@@ -35,6 +40,8 @@ public class FeedBack {
 	private String remaks;
 	@Column
 	private Integer rating;
+	
+	
 	public Long getId() {
 		return id;
 	}
