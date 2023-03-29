@@ -17,16 +17,17 @@ import com.jcg.mapstruct.service.CandidateService;
 import com.jcg.mapstruct.service.EventService;
 import com.jcg.mapstruct.service.UserService;
 
-
+//mark as mapper
 @Mapper(componentModel = "spring")
 public class MeetingMapper {
 	@Autowired 
 	private CandidateService service;
 	@Autowired
-    private	UserService userService;
+       private UserService userService;
 	@Autowired
 	private EventService eventService;
-
+ 
+	//mapping meeting to meeting dto 
 	public MeetingDto toMeetingDto(Meeting meeting)
 	{
 		return MeetingDto.builder()
@@ -41,7 +42,7 @@ public class MeetingMapper {
 				.build();
 	}
 	
-	
+	//mapping meetingdto to meeting
 	
 	public Meeting toMeeting(MeetingDto meetingDto)
 	{
@@ -56,6 +57,7 @@ public class MeetingMapper {
 		return meeting;
 		
 	}
+	
 	
 	public  List<MeetingDto> toDtos(List<Meeting> meetings){
 		if(meetings == null)
