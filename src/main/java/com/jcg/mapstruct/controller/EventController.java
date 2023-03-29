@@ -21,7 +21,7 @@ import com.jcg.mapstruct.Util.ResponseUtil;
 import com.jcg.mapstruct.dto.ResponseDto;
 import com.jcg.mapstruct.model.Event;
 import com.jcg.mapstruct.service.EventService;
-
+//marks as controller
 @RestController
 @RequestMapping("/event")
 public class EventController {
@@ -40,7 +40,7 @@ public class EventController {
 //	}
 //	
 	
-	
+	////creating a put mapping that save the detail of a event
 	@PostMapping("/save")
     public ResponseEntity<String> addMeeting(@RequestBody Event event) {
         if (eventService.isTimeSlotAvailable(event)) {
@@ -50,13 +50,13 @@ public class EventController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Time slot is already occupied.");
         }
     }
-
+//creating a get mapping that retrieves the detail of a specific event by local date
     @GetMapping("/{date}")
     public List<Event> getMeetingsForDay(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return eventService.getMeetingsForDay(date);
     }
     
-	
+	//creating a get mapping that retrieves the detail of a specific event
 	@GetMapping("/{id}")
 	public HttpEntity<ResponseDto> getEvent(@PathVariable Long id)
 	{
@@ -65,7 +65,7 @@ public class EventController {
 		return  new ResponseEntity<>(ResponseUtil.getSuccessResponse(event),HttpStatus.CREATED) ;
 		
 	}
-		
+	//creating a get mapping that retrieves the detail of all events	
 	@GetMapping("/find")
 	public HttpEntity<ResponseDto> getAll(){
 		
