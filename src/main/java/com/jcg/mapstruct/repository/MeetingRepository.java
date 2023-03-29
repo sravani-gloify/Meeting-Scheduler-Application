@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.jcg.mapstruct.dto.MeetingDto;
 import com.jcg.mapstruct.model.Meeting;
+
+//repository that extends CrudRepository  
 @Repository
 public interface MeetingRepository extends JpaRepository<Meeting, Long>{
 
