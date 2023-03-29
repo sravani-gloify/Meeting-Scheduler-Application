@@ -10,10 +10,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+//mark as entity
 @Entity
+//defining the table name
 @Table(name="users")
+//create no fileds constructor
 @NoArgsConstructor
+//create parameter constructor
 @AllArgsConstructor
+//mark as to string
 @ToString
 public class User {
 	@Id
