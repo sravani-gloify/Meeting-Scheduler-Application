@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.jcg.mapstruct.model.Candidate;
 
-
+//repository that extends CrudRepository  
 @Repository
 public interface CandidateRepository extends JpaRepository<Candidate,Long>{
 
