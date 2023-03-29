@@ -12,11 +12,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
+//create parameter constructor
 @AllArgsConstructor
+//getter and seeters
 @Data
+//mark as entity
 @Entity
+//defining table name
 @Table(name="event")
-public class Event {           	
+public class Event {   
+	//id is an primary key
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
