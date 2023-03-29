@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 import com.jcg.mapstruct.dto.UserDto;
 import com.jcg.mapstruct.model.User;
-
+//mark as mapper
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 	
