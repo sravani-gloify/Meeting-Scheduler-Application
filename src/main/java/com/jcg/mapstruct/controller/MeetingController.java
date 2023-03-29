@@ -21,16 +21,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jcg.mapstruct.dto.MeetingDto;
 import com.jcg.mapstruct.service.MeetingService;
 
-
+//creating the basic mappaing path
 @RequestMapping("/meeting")
+//marks as a controller
 @RestController
 public class MeetingController {
 	
 	@Autowired
 	private MeetingService  meetingService;
-	
+	//logger for save log file
 	 Logger log= LoggerFactory.getLogger(MeetingController.class);
 
+	//creating a put mapping that save  the detail of a meeting
 	@PostMapping("/save")
 	public HttpEntity<MeetingDto> scheduleMeeting(@RequestBody  MeetingDto meetingDto) throws IOException, MessagingException
 	{
@@ -39,7 +41,7 @@ public class MeetingController {
 		return new ResponseEntity<>(meetingDto,HttpStatus.CREATED);
 		
 	}
-	
+	//creating a get mapping that retrieves the detail of a specific meeting
 	@GetMapping("/schedulerEmail")
 	public HttpEntity<List<MeetingDto>> getMeeting(@RequestParam String schedulerEmail)
 	{
@@ -48,6 +50,7 @@ public class MeetingController {
 		return new ResponseEntity<>(meetingDto,HttpStatus.OK);
 		
 	}
+	//creating a get mapping that retrieves the detail of a specific event
 	@GetMapping(value="/event/{Id}")
 	public HttpEntity<MeetingDto> getAvailabilityByEventId(@PathVariable Long Id)
 	{
@@ -62,6 +65,7 @@ public class MeetingController {
 //		return meetingService.findByMeetingId(id);
 //		
 //	}
+	//simple api 
 	@GetMapping("/v")
 	public String getmeeting() {
 		
