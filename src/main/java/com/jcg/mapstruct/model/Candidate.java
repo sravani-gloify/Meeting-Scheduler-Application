@@ -6,11 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+//mark as an entity
 @Entity
+//defining the table name
 @Table(name="candidates")
 public class Candidate {
-	
+//Defining  id as primary key  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
