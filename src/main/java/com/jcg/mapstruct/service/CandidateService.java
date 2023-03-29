@@ -13,7 +13,7 @@ import com.jcg.mapstruct.dto.CandidateDto;
 import com.jcg.mapstruct.mapper.CandidateMapper;
 import com.jcg.mapstruct.model.Candidate;
 import com.jcg.mapstruct.repository.CandidateRepository;
-
+//defining the business logic  
 @Service
 public class CandidateService {
 
@@ -22,6 +22,7 @@ public class CandidateService {
 	@Autowired
 	private CandidateMapper  candidateMapper;
 	
+	//saving a specific record by using the method save() of CrudRepository  
 	public CandidateDto createCandidate(CandidateDto candidateDto) {
 		
 		Candidate candidate=candidateMapper.toCandidate(candidateDto);
@@ -29,22 +30,27 @@ public class CandidateService {
 		 candidateDto=candidateMapper.toCandidateDto(candidate);
 		return candidateDto;
 	   }
+	//getting a specific record by using the method findOne() of CrudRepository  
 	   public CandidateDto findOne(Long id) {
 	       Optional<Candidate> optionalUser=candidateRepository.findById(id);
 	       Candidate user=optionalUser.orElseThrow(()->new ResourceNotFoundException("ResourceNotFound",HttpStatus.NOT_FOUND));
 	       CandidateDto userDto=candidateMapper.toCandidateDto(user);
 	        return userDto;
 	    }
-	
+	//getting all record by using the method findAll() of CrudRepository  
 		public List<Candidate> findAll() {
 			
 			return candidateRepository.findAll();
 		}
-		
+		//getting a specific record by using the method findCandidateByEmail() of CrudRepository  
 		public Candidate findCadidateByEmail(String email) {
 		
 			return candidateRepository.findByEmail(email);
 		}
+	
+	
+	//creating the getter and setter mothods for autowired classes
+	
 		public CandidateRepository getCandidateRepository() {
 			return candidateRepository;
 		}
